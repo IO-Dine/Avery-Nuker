@@ -20,18 +20,6 @@ os.system(f'cls & mode 85,20 & title [Avery Nuker] - Configuration')
 
 version = '1.0'
 
-def updateCheck():
-    r = requests.get('https://pastebin.com/KkFahe1H')
-    if version in r.text:
-        return
-    else:
-        print(f"\x1b[38;5;56m[\033[37m!\x1b[38;5;56m] \033[37mNew Update Available. Download From: \x1b[38;5;56mgithub.com/skeqt/AveryNuker\033[37m")
-        os.system('start https://github.com/skeqt/AveryNuker/releases')
-        input()
-        os._exit(0)
-
-updateCheck()
-
 token = input(f'\x1b[38;5;56m> \033[37mToken\x1b[38;5;56m: \033[37m')
 rich_presence = input(f'\x1b[38;5;56m> \033[37mRich Presence (\x1b[38;5;56mY\033[37m/\x1b[38;5;56mN\033[37m)\x1b[38;5;56m: \033[37m')
 
@@ -68,41 +56,6 @@ client.remove_command("help")
 
 class Avery:
 
-    def __init__(self):
-        self.colour = '\x1b[38;5;56m'
-        self.blacklisted_binaries = ["ida64.exe", "ida.exe", "x64dbg.exe", "x32dbg.exe", "Wireshark.exe", "ollydbg.exe", "Fiddler.exe", "tcpview.exe", "vmsrvc.exe"]
-        self.blacklisted_platforms = ["VMWare Virtual Platform", "VirtualBox", "KVM", "Bochs", "HVM domU", "Microsoft Corporation"]
-        self.manufacturer = wmi.WMI().Win32_ComputerSystem()[0].Manufacturer
-    
-    @staticmethod
-    def is_debugged(self):
-        if windll.kernel32.IsDebuggerPresent():
-            return True
-        for frame in inspect.stack():
-            if frame[1].endswith("pydevd.py" or "pdb.py"):
-                return True
-        for process in psutil.process_iter():
-            for check in self.blacklisted_binaries:
-                if process.name() == check:
-                    return True
-        return False
-
-    @staticmethod
-    def is_virtualized(self):
-        for check in self.blacklisted_platforms:
-            if self.manufacturer == check:
-                return True
-        return False
-
-    async def DebuggerCheck(self):
-        try:
-            while True:
-                if self.is_debugged() == True or self.is_virtualized() == True:
-                    os.abort()
-                    os._exit(0)
-                await asyncio.sleep(7)
-        except:
-            pass
 
     def BanMembers(self, guild, member):
         while True:
@@ -444,5 +397,5 @@ class Avery:
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    loop.create_task(Avery().DebuggerCheck())
+    loop.create_task(Avery())
     Avery().Startup()
