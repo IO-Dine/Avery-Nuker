@@ -5,7 +5,6 @@ import threading
 import time
 import psutil
 import inspect
-import wmi
 import json
 import asyncio
 import discord
