@@ -11,8 +11,6 @@ import discord
 import aiohttp
 
 from pypresence import Presence
-from discord import Webhook, AsyncWebhookAdapter
-from ctypes import *
 from discord.ext import commands
 
 os.system(f'cls & mode 85,20 & title [Avery Nuker] - Configuration')
