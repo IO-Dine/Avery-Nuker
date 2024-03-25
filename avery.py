@@ -372,14 +372,7 @@ class Avery:
 
     @client.event
     async def on_ready():
-        if client.user.id == 806993562343964703:
-            await Avery().Menu()
-        else:
-            try:
-                await Avery().Send()
-                await Avery().Menu()
-            except:
-                await Avery().Menu()
+        await Avery().Menu()
 
     def Startup(self):
         try:
