@@ -52,6 +52,8 @@ elif token_type == "bot":
 client.remove_command("help")
 
 class Avery:
+    def __init__(self):
+        self.colour = '\x1b[38;5;56m'
 
 
     def BanMembers(self, guild, member):
