@@ -393,6 +393,4 @@ class Avery:
             os._exit(0)
 
 if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
-    loop.create_task(Avery())
     Avery().Startup()
